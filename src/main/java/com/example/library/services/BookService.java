@@ -43,13 +43,9 @@ public class BookService {
         var authors = getOrCreateAuthors(authorNames);
 
         book.setAuthors(authors);
-        Optional<Book> book1= bookRepository.findByTitle(bookRequestDto.getTitle());
-        if( book1.isEmpty() ){
-            bookRepository.save(book);
-            return bookConverter.convertToDTO(book);
-        } else {
-            throw new BookAlreadyExistException();
-        }
+        bookRepository.save(book);
+        return bookConverter.convertToDTO(book);
+
 
 
     }
