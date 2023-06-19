@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/book")
-@CrossOrigin("http://localhost:3000")
 @Tag(name = "Book Controller")
 public class BookController {
 
@@ -83,8 +82,17 @@ public class BookController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update book", description = "Update book")
-    public ResponseEntity<BookResponseDto> updateBook(@PathVariable int id, @RequestBody BookRequestDto book) {
+    public ResponseEntity<BookResponseDto> updateBook(@PathVariable int id,
+                                                      @RequestBody BookRequestDto book) {
         BookResponseDto bookResponseDto = service.updateBook(id, book);
         return ResponseEntity.ok(bookResponseDto);
     }
+
+    @GetMapping("/count")
+    @Operation(summary = "Count book", description = "Count book")
+    public ResponseEntity<Integer> countBook(){
+        List<BookResponseDto> allBooks = service.getAllBooks();
+        return ResponseEntity.ok(allBooks.size());
+    }
+
 }

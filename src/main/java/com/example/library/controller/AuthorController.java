@@ -51,7 +51,8 @@ public class AuthorController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Update author", description = "Update author")
-    public ResponseEntity<AuthorResponseDto> updateAuthor(@PathVariable int id, @RequestBody AuthorRequestDto author) {
+    public ResponseEntity<AuthorResponseDto> updateAuthor(@PathVariable int id,
+                                                          @RequestBody AuthorRequestDto author) {
         AuthorResponseDto authorResponseDto = service.updateAuthor(id, author);
         return ResponseEntity.ok(authorResponseDto);
     }
