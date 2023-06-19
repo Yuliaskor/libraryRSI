@@ -2,6 +2,7 @@ package com.example.library.exception.handler;
 
 import com.example.library.exception.BookAlreadyExistException;
 import com.example.library.exception.AuthorAlreadyExistException;
+import jakarta.xml.bind.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,4 +25,5 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<String> handleConflictException(RuntimeException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
+
 }

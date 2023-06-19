@@ -91,4 +91,10 @@ public class BookService {
                 .map(bookConverter::convertToDTO)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
     }
+
+    public List<BookResponseDto> getBooksByName(String name) {
+        return bookRepository.findByTitle(name).stream()
+                .map(bookConverter::convertToDTO)
+                .collect(Collectors.toList());
+    }
 }
