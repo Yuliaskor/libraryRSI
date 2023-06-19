@@ -1,4 +1,13 @@
 spring:
+  # application.yml
+  spring:
+    mvc:
+      cors:
+        allowed-origins: "*"
+        allowed-methods: GET, POST, PUT, DELETE
+        allowed-headers: "*"
+        allow-credentials: false
+
   datasource:
     url: jdbc:postgresql://localhost:5432/library
     username: postgres
